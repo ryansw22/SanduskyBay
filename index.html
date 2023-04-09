@@ -1,15 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sandusky Bay webpage</title>
+<title>Sandusky Bay</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <div align = 'center'>
-	<h1>Welcome to the landing page for Sandusky Bay Data</h1>
+    <h1>Sandusky Bay Data</h1>
 </div>
-	<p>Map of Sandusky Bay with sampling sites</p>
-	<img src="Figures/MapWithInset.png" alt="Sandusky Bay Monitoring map" width="500" height="300">
-</body>
-</html>
+<div align = 'center'>
+    <p></p>
+    <img src="images/MapWithInset.png" alt="Sandusky Bay Monitoring map" width="700" height="400">
+    <br>
+    <form>
+        <label for="year-menu">Choose a Year:</label>
+        <select id="year-menu" name="year-menu">
+            <option value="">--Select a year--</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+        </select>
+        <label for="data-menu">Choose a data category:</label>
+        <select id="data-menu" name="data-menu" disabled>
+            <option value="">--Select a data category--</option>
+        </select>
+    </form>
+      
+    <script>
+        // Get references to the year and data menus
+        var yearMenu = document.getElementById("year-menu");
+        var dataMenu = document.getElementById("data-menu");
+        // Define the initial option for the data menu
+        var initialDataOption = document.createElement("option");
+        initialDataOption.value = "";
+        initialDataOption.textContent = "--Select a data category--";
+        dataMenu.appendChild(initialDataOption);
+      
+        // Define the options for each year
+        var yearOptions = {
+            "2016": [
+                { text: "Select a data category", value: "" }, 
+                { text: "Chlorophyll", value: "2016_Chlorophyll.html" },
+                { text: "Toxins", value: "2016_Toxins.html" },
+                { text: "Nutrients", value: "2016_Nutrients.html" },
+                { text: "Environmental", value: "2016_Environmental.html" }
+            ],
+            "2017": [
+                { text: "Select a data category", value: "" },
+                { text: "Chlorophyll", value: "data/2017_Chlorophyll.html" },
+                { text: "Toxins", value: "data/2017_Toxins.html" },
+                { text: "Nutrients", value: "data/2017_Nutrients.html" },
+                { text: "Environmental", value: "data/2017_Environmental.html" }
+            ],
+            // Add options for other years here
+        };
+      
+        // Update the data menu options when the year menu changes
+        yearMenu.addEventListener("change", function () {
+  // Clear the existing options in the data menu
+  dataMenu.innerHTML = "";
 
+  // Get the selected year
+  var selectedYear = yearMenu.value;
 
+  if (selectedYear !== "") {
+    // Add the options for the selected year to the data menu
+    yearOptions[selectedYear].forEach(function (option) {
+      var optionElement = document.createElement("option");
+      optionElement.value = option.value;
+      optionElement.textContent = option.text;
+      dataMenu.appendChild(optionElement);
+    });
+
+    // Enable the data menu
+    dataMenu.disabled = false;
+  } else {
+    // Disable the data menu
+    dataMenu.disabled = true;
+  }
+});
+
+// Update the page when the data menu changes
+dataMenu.addEventListener("change", function () {
+  // Get the selected data file
+  var selectedData = dataMenu.value;
+
+  if (selectedData !== "") {
+    // Redirect to the selected data file
+    window.location.href = selectedData;
+  }
+});
+</script>

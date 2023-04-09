@@ -1,0 +1,15 @@
+/* Set a dark theme for the page */
+body {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Set link color */
+  a {
+    color: #ddd;
+  }
+  
+  /* Set link hover color */
+  a:hover {
+    color: #fff;
+  }
