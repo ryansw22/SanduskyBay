@@ -1536,7 +1536,20 @@ margin-left: 0 !important;
    
 <!-- Don't indent these lines or it will mess pre blocks indentation --> 
 <div class="page-content has-page-title">
-<p><a href="https://ryansw22.github.io/github.io/">Home</a></p>
+<button class="back-button">
+Home
+</button>
+<script>
+    // Get references to the back button
+    var backButton = document.querySelector('.back-button');
+    // Define the function to navigate back to the index page
+    const goBackToIndex = () => {
+        window.location.href = "https://ryansw22.github.io/github.io/"; 
+        // Replace "index.html" with the actual name of your index page
+    };
+    // Add event listener to the back button
+    backButton.addEventListener('click', goBackToIndex);
+</script>
 <div id="sites-yearly-average" class="section level1" align="center">
 <h1>Sites yearly average</h1>
 </div>
