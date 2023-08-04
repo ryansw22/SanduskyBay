@@ -7,9 +7,12 @@
 <body>
 <div align = 'center'>
     <h1>Sandusky Bay Data</h1>
+    <h2><div align='center'>
+        <button class="refresh-button">Refresh Page</button>
+        <button class="back-button">Go Back to Index</button>
+    </div></h2>
 </div>
 <div align = 'center'>
-    <p></p>
     <img src="MapWithInset.png" alt="Sandusky Bay Monitoring map" width="700" height="400">
     <br>
     <form>
@@ -150,4 +153,24 @@ dataMenu.addEventListener("change", function () {
     window.location.href = selectedData;
   }
 });
+ // Get references to the refresh button
+ var refreshButton = document.querySelector('.refresh-button');
+
+// Define the function to refresh the page
+const refreshPage = () => {
+    location.reload();
+};
+
+// Add event listener to the refresh button
+refreshButton.addEventListener('click', refreshPage);
+    // Get references to the back button
+    var backButton = document.querySelector('.back-button');
+
+    // Define the function to navigate back to the index page
+    const goBackToIndex = () => {
+        window.location.href = "index.html"; // Replace "index.html" with the actual name of your index page
+    };
+
+    // Add event listener to the back button
+    backButton.addEventListener('click', goBackToIndex);
 </script>
